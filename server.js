@@ -12,6 +12,10 @@ server.get('/hello',(req,res)=>{
   res.render('pages/index');
 });
 
+server.get('/show',(req,res)=>{
+  res.render('pages/searches/show');
+});
+
 
 
 
