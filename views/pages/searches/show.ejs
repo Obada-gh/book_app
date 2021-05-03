@@ -7,14 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Sort By</h2>
-    <form>
-        <input type="radio" id="title" name="gender" value="title">
-        <label for="title">title</label><br>
-        <input type="radio" id="author" name="gender" value="author">
-        <label for="title">author</label><br>
-        <button>Search the google books api</button>
-      </form> 
+ <h1>hello world</h1>
+ <main>
+     <a href="/">home</a>
+     <a href="/searches/new">book search</a>
+
+     <h2>list</h2>
+ 
+     <section>
+         <%booksArr.forEach(element=>{ %>
+            <div>
+                <img src="<%= element.url %>">
+                <h2>
+                    <%= element.title %>
+                </h2>
+                <h2>
+                    <%= element.author %>
+                </h2>
+                <h2>
+                    <%= element.description %>
+                </h2>
+
+            </div>
+
+         <%})%>
+
+         
+     </section>
+ </main>
+
     
 </body>
 </html>
