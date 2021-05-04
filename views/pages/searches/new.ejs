@@ -7,18 +7,32 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>hello world</h1>
+    <header>
+        <nav>
+            <h1>BOOKS_APP</h1>
+        </nav>
+        <Section class="links">
+            <a href="/"></a>
+            <a href="/searches/new">Book Search</a>
+
+        </Section>
+    </header>
+
     <main>
-        <a href="/">home</a>
-        <a href="/searches/new">book search</a>
+        <form action="/searches" method="POST">
+        <input type="text" name="search" required placeholder="search..">
+    <aside class="radio">
+
+        <label for="">title</label>
+        <input type="text" name="type" value="title" checked required>
+        <label for="">author</label>
+        <input type="radio" name="type" value="author" required>
+
+    </aside>
+<button>Search the Goole books API</button>
+</form>
     </main>
-    <h2>Sort By</h2>
-    <form>
-        <input type="radio" id="title" name="gender" value="title">
-        <label for="title">title</label><br>
-        <input type="radio" id="author" name="gender" value="author">
-        <label for="title">author</label><br>
-        <button>Search the google books api</button>
-      </form> 
+    <footer></footer>
+    
 </body>
 </html>
