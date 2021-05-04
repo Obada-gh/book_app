@@ -5,20 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../styles/base.css">
 </head>
 <body>
-    <h1>hello world</h1>
+    <%- include('../layout/header') %>
+
     <main>
-        <a href="/">home</a>
-        <a href="/searches/new">book search</a>
+        <form method="POST" action="/searches" >
+        <input type="text" name="search" required placeholder="search pls">
+    <aside class="radio">
+
+        <label for="">title</label>
+        <input type="text" name="type" value="title" checked required>
+        <label for="">author</label>
+        <input type="radio" name="type" value="author" required>
+
+    </aside>
+<button>Search the Google books API</button>
+</form>
     </main>
-    <h2>Sort By</h2>
-    <form>
-        <input type="radio" id="title" name="gender" value="title">
-        <label for="title">title</label><br>
-        <input type="radio" id="author" name="gender" value="author">
-        <label for="title">author</label><br>
-        <button>Search the google books api</button>
-      </form> 
+    <footer></footer>
+    
 </body>
 </html>
