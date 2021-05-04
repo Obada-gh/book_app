@@ -1,5 +1,5 @@
 'use strict';
-require('dotenv').config;
+require('dotenv').config();
 const express = require('express');
 // const bodyParser = require('body-parser');
 const pg = require('pg');
@@ -24,13 +24,15 @@ client.connect().then(()=>{
 
 
 server.get('/',(req,res)=>{
-  // let sql = `SELECT * FROM books;`;
-  // client.query(sql).then(info =>{
-  //   console.log(info.rows);
-  let obada = {age:25
-  };
-  res.render('pages/index',{Data:obada});
+  let sql = `SELECT * FROM books;`;
+  client.query(sql).then(info =>{
+    res.render('pages/index',{Data:info.rows});
+  }).catch(error => {res.send(error);
+    console.log(error);
+  });
+
 });
+
 
 
 server.get('/searches/new',(req,res)=>{
@@ -96,8 +98,8 @@ function BooksCons(bookAdd){
   }else {
     this.url = 'https://i.imgur.com/J5LVHEL.jpg';
   }
-  this.title=bookAdd. volumeInfo.title;
-  this.author=bookAdd.volumeInfo.authors;
+  this.title=bookAdd.volumeInfo.title || 'not found';
+  this.author=bookAdd.volumeInfo.authors || 'not found';
   this.description=bookAdd.volumeInfo.description || 'not found';
 }
 
@@ -144,7 +146,4 @@ function errorHandler(req,res) {
 
 
 // //   res.render('bookslist',{fdata:farr});
-// });
-
-
-
+// })

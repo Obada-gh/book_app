@@ -5,15 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./styles/base.css">
 </head>
+
 <body>
-    <!-- <%- include('./layout/header') %> -->
+    <%- include('./layout/header') %>
     <main>
-        <!-- <h1>Number Of Books : <%= Data.length %></h1>
+        <h1>Number Of Books : <%= Data.length %></h1>
         <% Data.forEach(book=>{ %>
 
             <div>
-                <img src="<%= book.url %" alt="">
+                <img src="<%= book.url %>" alt="">
                 <h2>
                     TITLE: <%= book.title %>
                 </h2>
@@ -23,9 +25,10 @@
                 <a href="/books/<%=book.id%>"> details</a>
             </div>
 
-        <% }) %> -->
-        <!-- <h1>
-            <%= Data.age %>        </h1> -->
+        <% }) %> 
+
+    
+      
       
     </main>
     <footer></footer>
