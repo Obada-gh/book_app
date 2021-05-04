@@ -1,12 +1,9 @@
 'use strict';
 require('dotenv').config();
 const express = require('express');
-// const bodyParser = require('body-parser');
 const pg = require('pg');
 const superagent = require('superagent');
 const server = express();
-// const ejs = require('ejs');
-// server.use(ejs);
 const cors = require('cors');
 server.use(cors());
 const PORT = process.env.PORT || 8000;
