@@ -1,16 +1,16 @@
 'use strict';
-require('dotenv').config();
+
 const express = require('express');
-// const bodyParser = require('body-parser');
+require('dotenv').config();
 const pg = require('pg');
+const methodOverride = require('method-override');
 const superagent = require('superagent');
 const server = express();
-// const ejs = require('ejs');
-// server.use(ejs);
 const cors = require('cors');
 server.use(cors());
 const PORT = process.env.PORT || 8000;
 server.use(express.static('./public'));
+server.use(methodOverride('_method'));
 server.set('view engine','ejs');
 server.use(express.urlencoded({extended:true})); // take the form data and add it into the req.body also to use post method
 const client = new pg.Client(process.env.DATABASE_URL);
@@ -67,7 +67,7 @@ server.post('/addbook',(req,res)=>{
 
 server.get('/books/:id',(req,res)=> {
   let idBook = req.params.id;
-  let sql = `SELECT * FROM books WHERE id=$1`;
+  let sql = `SELECT * FROM books WHERE id=$1;`;
   let val = [idBook];
   client.query(sql,val).then(data=>{
     res.render('pages/detail',{book: data.rows[0]});
@@ -86,6 +86,31 @@ server.get('/hello',(req,res)=>{
 
 server.get('/show',(req,res)=>{
   res.render('pages/searches/show');
+});
+
+
+
+server.put('/updateBook/:id',(req,res)=>{
+  // console.log(req.body);
+  let {url,title,author,description} = req.body;
+  let sql = `UPDATE books SET url=$1,title=$2,author=$3,description=$4 WHERE id=$5;`;
+  let val = [url,title,author,description,req.params.id];
+  client.query(sql,val).then(()=>{
+    res.redirect(`/books/${req.params.id}`);
+  }).catch(error=>{
+    res.render('pages/error',{err:error});
+  });
+
+});
+
+server.delete('/deleteBook/:id',(req,res)=>{
+  let sql = 'DELETE FROM books WHERE id=$1;';
+  let val=[req.params.id];
+  client.query(sql,val).then(()=>{
+    res.redirect('/');
+  }).catch(error=>{
+    res.render('pages/error',{err:error});
+  });
 });
 
 
