@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/base.css">
+</head>
+<body>
+    <%- include('../layout/header') %>
+    <main>
+        <div>
+
+            <h1>Book Details</h1>
+        <img src="<%= book.url %>" alt="bookImg">
+        <h2>Title: <%= book.title %></h2>
+        <h2>Author: <%= book.author %></h2>
+        <p>Description: <%= book.description %></p>
+
+        </div>
+        
+         <div class="updateBtn"> 
+            <button id="updatBtn">UPDATE</button>
+         </div>
+        
+
+        <form action="/deleteBook/<%=book.id%>?_method=delete" method="POST">
+    <button>Delete Book</button>
+        </form>
+        <section id="updateForm">
+         <%- include('edit')%>
+        </section>
+    </main>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../app.js"></script>
+</body>
+</html>
