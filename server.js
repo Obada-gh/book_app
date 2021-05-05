@@ -70,7 +70,7 @@ server.get('/books/:id',(req,res)=> {
   let sql = `SELECT * FROM books WHERE id=$1;`;
   let val = [idBook];
   client.query(sql,val).then(data=>{
-    res.render('pages/detail',{book: data.rows[0]});
+    res.render('./pages/books/detail',{book: data.rows[0]});
   }).catch(error=>{
     res.render('pages/error',{err:error});
   });
